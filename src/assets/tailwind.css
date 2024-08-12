@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* import font from url */
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+body {
+  background-color: #f2f2f2;
+  font-family: "Comic Neue", cursive;
+}
+
+.router-link-active {
+  background-color: #ff3333;
+  border-radius: 16px;
+  border: 1px solid black;
+}
+
+/* For WebKit-based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: none; /* Firefox */
+}
+::-moz-scrollbar {
+  display: none; /* Firefox */
+}
