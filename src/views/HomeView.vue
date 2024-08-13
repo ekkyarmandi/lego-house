@@ -1,7 +1,7 @@
 <template>
   <div>
     <SearchBar />
-    <ul class="flex flex-wrap gap-9 justify-between">
+    <ul class="grid grid-cols-4 gap-y-9">
       <li v-for:="product in products">
         <Product :data="product" />
       </li>
