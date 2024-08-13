@@ -1,10 +1,12 @@
 <template>
-  <button :disabled="isDisabled" :class="`${backgroundColor} text-white font-bold border border-black py-2 rounded-md flex gap-3 justify-center items-center clone min-h-10 min-w-10`" @mousedown="handleMouseDown" @mouseup="handleMouseUp">
+  <button :disabled="isDisabled" :class="refinedClassList" @mousedown="handleMouseDown" @mouseup="handleMouseUp">
     <slot />
   </button>
 </template>
 
 <script>
+import { twMerge } from "tailwind-merge";
+
 export default {
   name: "Button",
   props: {
@@ -14,14 +16,20 @@ export default {
     isDisabled: {
       default: false,
     },
+    widthFull: {
+      default: false,
+    },
+  },
+  data() {
+    return {
+      classList: "text-white font-bold border border-black py-2 rounded-md flex gap-3 justify-center items-center min-h-10 min-w-10 clone",
+    };
   },
   computed: {
-    backgroundColor() {
-      if (this.color == "red") {
-        return `bg-primary-500`;
-      } else if (this.color == "blue") {
-        return `bg-secondary-500`;
-      }
+    refinedClassList() {
+      const bg = this.color == "red" ? "bg-primary-500" : this.color == "blue" ? `bg-secondary-500` : "";
+      const width = this.widthFull && "w-full";
+      return twMerge(this.classList, width, bg);
     },
   },
   methods: {
